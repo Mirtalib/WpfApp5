@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,34 +19,64 @@ using WpfApp5.Veiw;
 
 namespace WpfApp5.User_Control
 {
-    /// <summary>
-    /// Interaction logic for UC_Product.xaml
-    /// </summary>
-    public partial class UC_Product : UserControl
+
+    public partial class UC_Product : UserControl , INotifyPropertyChanged
     {
-        Product product1 = null;
-        public UC_Product(Product product)
+        public bool isAdd = false;
+        public bool isFavorite = false;
+        public Product? product { get; set; }
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        public UC_Product()
         {
             InitializeComponent();
-            product1 = product;
-
-
-            txtBoxIDProduct.Text = product.Id.ToString();
-            txtBoxNameProduct.Text = product.Name;
-            txtBoxPriceProduct.Text = product.Price.ToString();
-            txtBoxProductionDate.Text = product.DateTime.ToLongDateString();
+            DataContext = this;
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
             EditProduct editProduct = new();
-
-            editProduct.product = product1;
-
+            editProduct.product = product;
             editProduct.ShowDialog();
+        }
 
+        private void btnFavorite_Click(object sender, RoutedEventArgs e)
+        {
+            if (isFavorite is false)
+                isFavorite = true;
+            else
+                isFavorite = false;
+        }
+          
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            isAdd = true;
+            MessageBox.Show("The product has been added", "", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ShowProduct showProduct = new ShowProduct();
+            showProduct.product = product;
+            showProduct.ShowDialog();
+        }
+
+
+        private string? _someText;
+
+        public string? SomeText
+        {
+            get => _someText;
+            set
+            {
+                _someText = value;
+                NotifyPropertyChanged();
+            }
         }
     }
 }

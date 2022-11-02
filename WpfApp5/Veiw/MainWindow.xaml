@@ -5,31 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5.Veiw"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500">
-    <Grid Background="Black">
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="DarkOrange">
 
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBox Margin="140,10,140,10"  ></TextBox>
 
-        <Grid Grid.Row="1">
-
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="11*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
+            <Button 
+                Name="btnShoping"
+                Width="40" 
+                Height="30" 
+                Click="btnShoping_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Image/185100_caddie_shop_shopping_icon.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
 
+            <Button 
+                x:Name="btnFavorites"
+                Grid.Column="2"
+                Width="40" 
+                Height="30"
+                Click="btnFavorites_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Image/2931154_bookmark_favorite_rank_rating_star_icon.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+        </Grid>
 
-            <Grid Grid.Column="1" >
-                <ListBox x:Name="listBoxUserControl1">
-                </ListBox>
-            </Grid>
- 
-            
+        <Grid Grid.Row="1" Background="White" >
+            <ScrollViewer 
+                    x:Name="MyScrollViewer" 
+                    Margin="20 0 0 20" 
+                    HorizontalScrollBarVisibility="Auto" 
+                    VerticalScrollBarVisibility="Hidden">
+                <WrapPanel Name="pnlProducts"></WrapPanel>
+            </ScrollViewer>
         </Grid>
         
     </Grid>

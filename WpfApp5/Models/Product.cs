@@ -9,12 +9,12 @@ namespace WpfApp5.Models
     public class Product
     {
 
-        public int Id { get; set; }
+        public decimal Id { get; set; }
         public string? Image { get; set; }
         public string? Name { get; set; }
         public int Price { get; set; }
         public DateTime DateTime { get; set; }
-        public Product(int id, string? name, int price, DateTime dateTime)
+        public Product(decimal id, string? name, int price, DateTime dateTime)
         {
             Id = id;
             Name = name;

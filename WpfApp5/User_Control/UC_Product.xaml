@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp5.User_Control"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="300">
-    <Grid Background="Black">
+             d:DesignHeight="350" d:DesignWidth="300"
+             MouseDoubleClick="UserControl_MouseDoubleClick">
+    <Grid Background="White" Margin="10" >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"></RowDefinition>
@@ -14,18 +15,51 @@
         </Grid.RowDefinitions>
 
 
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="7*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Border Grid.Column="1">
+                <Image Source="/Image/ImageNotProduct.jpg" Stretch="Uniform">
 
-        <Border>
-            <Image Source="/Image/ImageNotProduct.jpg" Stretch="Fill">
+                </Image>
+            </Border>
 
-            </Image>
-        </Border>
-        
-        
-        <Grid Grid.Row="1">
+            <StackPanel Grid.Column="0">
+
+                <Button
+                    x:Name="btnEdit"
+                    Height="20"
+                    Width="30"
+                    Click="btnEdit_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Image/8666683_edit_2_icon.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+            
+            
+            <StackPanel Grid.Column="2">
+                <Button
+                    x:Name="btnFavorite"
+                    Height="20"
+                    Width="30"
+                    Click="btnFavorite_Click" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Image/8664909_heart_like_icon.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+
+
+        <Grid Grid.Row="1" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -35,93 +69,47 @@
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label 
-                Foreground="#00E8FC"
-                Content="ID:" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
-                ></Label>
+
 
             <Label
-                Foreground="#00E8FC"
-                Grid.Row="1"
+                Style="{StaticResource lblUc}"
+                Grid.Row="0"
                 Content="Name:" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
-                ></Label>
-            
-            <Label 
-                Foreground="#00E8FC"
-                Grid.Row="2"
-                Content="Price:" 
-                HorizontalAlignment="Left"  
-                VerticalAlignment="Center"
-                ></Label>
-            
-            <Label 
-                Foreground="#00E8FC"
-                Grid.Row="3"
-                Content="Date:" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
                 ></Label>
 
+            <Label 
+                Style="{StaticResource lblUc}"
+                Grid.Row="1"
+                Content="Price:" 
+                ></Label>
+
+
             <TextBox 
-                x:Name="txtBoxIDProduct"
-                Foreground="#00E8FC"
-                Background="Black"
+                Text="{Binding product.Name}" 
+                Style="{StaticResource txtBoxUc}"
                 Grid.Row="0"
                 Grid.Column="1"
-                Text="ID Product" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
                 ></TextBox>
 
             <TextBox 
-                x:Name="txtBoxNameProduct"
-                Foreground="#00E8FC"
-                Background="Black"
+                Text="{Binding product.Price}" 
+                Style="{StaticResource txtBoxUc}"
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="Name Product" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
-                IsReadOnly="True"
                 ></TextBox>
 
-            <TextBox 
-                x:Name="txtBoxPriceProduct"
-                Foreground="#00E8FC"
-                Background="Black"
-                Grid.Row="2"
-                Grid.Column="1"
-                Text="Price Product" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
-                IsReadOnly="True"
-                ></TextBox>
-
-            <TextBox 
-                x:Name="txtBoxProductionDate"
-                Foreground="#00E8FC"
-                Background="Black"
-                Grid.Row="3"
-                Grid.Column="1"
-                Text="Production date" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center"
-                IsReadOnly="True"
-                ></TextBox>
 
             <Button
-                Grid.Row="4"
-                Grid.Column="0"
-                Margin="4"
-                Foreground="#00E8FC"
-                Background="Black"
-                Click="Button_Click"
-                >Edit </Button>
-            
+                Name="btnAdd"
+                Grid.Column="2"
+                Grid.Row="2"
+                Click="btnAdd_Click"
+                Content="Add"
+                Background="DarkOrange"
+                Foreground="White"> 
+                
+            </Button>
+
 
         </Grid>
     </Grid>

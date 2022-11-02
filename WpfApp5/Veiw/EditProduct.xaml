@@ -5,22 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp5.Veiw"
         mc:Ignorable="d"
-        Title="EditProduct" Height="450" Width="500">
-    <Grid>
+        Title="Edit Product" Height="310" Width="350">
+    <Grid Background="DarkOrange">
+        <StackPanel Width="300">
+            <Label HorizontalContentAlignment="Left" FontSize="20">ID</Label>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Id}"></TextBox>
 
+            <Label HorizontalContentAlignment="Left" FontSize="20">Name</Label>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Name}"></TextBox>
 
-        <StackPanel Width="400">
-            <Label HorizontalContentAlignment="Center" FontSize="45">Make</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="36" Text="{Binding product.Id}"></TextBox>
+            <Label HorizontalContentAlignment="Left" FontSize="20">Price</Label>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding  product.Price}"></TextBox>
 
-            <Label HorizontalContentAlignment="Center" FontSize="45">Model</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="36" Text="{Binding product.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-
-            <Label HorizontalContentAlignment="Center" FontSize="45">Year</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="36" Text="{Binding  product.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            
-            <Label HorizontalContentAlignment="Center" FontSize="45">Year</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="36" Text="{Binding product.DateTime ,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label HorizontalContentAlignment="Left" FontSize="20">Date Time</Label>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.DateTime}"></TextBox>
         </StackPanel>
     </Grid>
 </Window>

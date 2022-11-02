@@ -23,21 +23,52 @@ namespace WpfApp5.Veiw
     {
         public MainWindow()
         {
+
             Product product = new(12, "new", 123, DateTime.Now);
+            Product product2 = new(12, "new", 123, DateTime.Now);
             InitializeComponent();
-            UC_Product uC_Product = new(product);
-            UC_Product uC_Product2 = new(product);
-            UC_Product uC_Product3 = new(product);
-            UC_Product uC_Product4 = new(product);
-            UC_Product uC_Product5 = new(product);
+            UC_Product uC_Product = new UC_Product();
+            uC_Product.product = product;
+            UC_Product uC_Product2 = new();
+            uC_Product2.product = product2;
+            
 
 
-            listBoxUserControl1.Items.Add(uC_Product);
-          
-            listBoxUserControl1.Items.Add(uC_Product2);
-            listBoxUserControl1.Items.Add(uC_Product3);
-            listBoxUserControl1.Items.Add(uC_Product4);
-            listBoxUserControl1.Items.Add(uC_Product5);
+            pnlProducts.Children.Add(uC_Product);
+            pnlProducts.Children.Add(uC_Product2);
+
+        }
+
+        private void btnShoping_Click(object sender, RoutedEventArgs e)
+        {
+
+            List<UC_Product> uc_Products = new List<UC_Product>();
+
+            UC_Product? product;
+            
+            foreach (var item in pnlProducts.Children)
+            {
+                product = item as UC_Product;
+                if (product is null)
+                    return;
+                switch (product.isAdd)
+                {
+                    case true:
+                        uc_Products.Add(product);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            ShopProduct shopProduct = new ShopProduct(uc_Products);
+            
+            shopProduct.ShowDialog();
+        }
+
+        private void btnFavorites_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
