@@ -9,16 +9,16 @@
     <Grid Background="DarkOrange">
         <StackPanel Width="300">
             <Label HorizontalContentAlignment="Left" FontSize="20">ID</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Id}"></TextBox>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Id, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
             <Label HorizontalContentAlignment="Left" FontSize="20">Name</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Name}"></TextBox>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
             <Label HorizontalContentAlignment="Left" FontSize="20">Price</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding  product.Price}"></TextBox>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding  product.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
             <Label HorizontalContentAlignment="Left" FontSize="20">Date Time</Label>
-            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.DateTime}"></TextBox>
+            <TextBox Foreground="DeepSkyBlue" FontSize="20" Text="{Binding product.DateTime, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         </StackPanel>
     </Grid>
 </Window>

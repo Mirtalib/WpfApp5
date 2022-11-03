@@ -17,14 +17,12 @@ namespace WpfApp5.Veiw
 {
     public partial class ShopProduct : Window
     {
-        public List<UC_Product> uC_Product { get; set; }
-        public ShopProduct(List<UC_Product> _uC_Product)
+        public List<UC_Product>? uC_Product { get; set; }
+        public ShopProduct(List<UC_Product>? _uC_Product)
         {
             InitializeComponent();
-
             uC_Product = _uC_Product;
-
-            if (uC_Product is not null)
+            if (uC_Product?.Count > 0)
             {
                 foreach (var item in uC_Product)
                     listBoxProduct.Items.Add(item);

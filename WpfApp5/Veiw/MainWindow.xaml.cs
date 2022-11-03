@@ -26,6 +26,7 @@ namespace WpfApp5.Veiw
 
             Product product = new(12, "new", 123, DateTime.Now);
             Product product2 = new(12, "new", 123, DateTime.Now);
+
             InitializeComponent();
             UC_Product uC_Product = new UC_Product();
             uC_Product.product = product;
@@ -60,9 +61,7 @@ namespace WpfApp5.Veiw
                         break;
                 }
             }
-
             ShopProduct shopProduct = new ShopProduct(uc_Products);
-            
             shopProduct.ShowDialog();
         }
 
